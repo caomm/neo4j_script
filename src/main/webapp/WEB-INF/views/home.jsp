@@ -365,7 +365,7 @@ input[type=range] {
 		url : 'http://localhost:7474',
 		user : 'neo4j',
 		password : '123456'
-	}, 'MATCH (a)-[:ACTED_IN]->(m)<-[:DIRECTED]-(d) RETURN a,m,d LIMIT 10',
+	}, 'MATCH ()-[r]->() RETURN r LIMIT 25',
 			initSigma, customiseGraph);
 
 	var activeState = sigma.plugins.activeState(initSigma);
