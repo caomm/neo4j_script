@@ -375,7 +375,7 @@ input[type=range] {
 		url : 'http://localhost:7474',
 		user : 'neo4j',
 		password : '123456'
-	}, 'MATCH ()-[r:KNOWS]->() RETURN r LIMIT 25',
+	}, 'MATCH ()-[r:has_item]->() RETURN r LIMIT 25',
 			initSigma, customiseGraph);
 
 	var activeState = sigma.plugins.activeState(initSigma);
