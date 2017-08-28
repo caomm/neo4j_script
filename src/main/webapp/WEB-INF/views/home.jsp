@@ -304,6 +304,7 @@ input[type=range] {
 				n.color = '#DFE1E3';
 			}*/
 			n.label = n.neo4j_data.title;
+			n.typeName = n.node_type;
 			n.size = 16.0;
 			n.fixed = false;
 		});
@@ -311,6 +312,12 @@ input[type=range] {
 		s.graph.edges().forEach(function(n) {
 			n.color = '#989898';
 			n.size = 2.1;
+            id : n.id,
+			label = n.type,
+			source = n.startNode,
+			target = n.endNode,
+			neo4j_type = n.type
+
 		});
 
 		var config = {
@@ -335,6 +342,9 @@ input[type=range] {
 					node.degree = this.degree(node.id);
 					return Mustache.render(template, node);
 				}
+			},
+			edge:{
+                show : 'overEdge'
 			}
 		};
 
@@ -365,7 +375,7 @@ input[type=range] {
 		url : 'http://localhost:7474',
 		user : 'neo4j',
 		password : '123456'
-	}, 'MATCH ()-[r]->() RETURN r LIMIT 25',
+	}, 'MATCH ()-[r:KNOWS]->() RETURN r LIMIT 25',
 			initSigma, customiseGraph);
 
 	var activeState = sigma.plugins.activeState(initSigma);
